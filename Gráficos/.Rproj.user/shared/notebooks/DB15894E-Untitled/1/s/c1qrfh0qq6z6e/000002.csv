@@ -1,0 +1,6 @@
+"0","```r
+row.names(USArrests)[which(USArrests$Murder < 5)]
+```"
+"1"," [1] \"Connecticut\"   \"Idaho\"         \"Iowa\"          \"Maine\"         \"Massachusetts\" \"Minnesota\"     \"Nebraska\"      \"New Hampshire\" \"North Dakota\" 
+[10] \"Oregon\"        \"Rhode Island\"  \"South Dakota\"  \"Utah\"          \"Vermont\"       \"Washington\"    \"Wisconsin\"    
+"

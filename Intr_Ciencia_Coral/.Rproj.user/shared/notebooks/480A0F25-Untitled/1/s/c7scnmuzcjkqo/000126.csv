@@ -1,0 +1,68 @@
+"0","attach(hip)"
+"2","The following objects are masked from hip (pos = 3):
+
+    B.V, DE, e_Plx, HIP, Plx, pmDE, pmRA, RA, Vmag
+
+"
+"2","The following objects are masked from hip (pos = 4):
+
+    B.V, DE, e_Plx, HIP, Plx, pmDE, pmRA, RA, Vmag
+
+"
+"2","The following objects are masked from hip (pos = 5):
+
+    B.V, DE, e_Plx, HIP, Plx, pmDE, pmRA, RA, Vmag
+
+"
+"2","The following objects are masked from hip (pos = 6):
+
+    B.V, DE, e_Plx, HIP, Plx, pmDE, pmRA, RA, Vmag
+
+"
+"2","The following objects are masked from hip (pos = 7):
+
+    B.V, DE, e_Plx, HIP, Plx, pmDE, pmRA, RA, Vmag
+
+"
+"2","The following objects are masked from hip (pos = 8):
+
+    B.V, DE, e_Plx, HIP, Plx, pmDE, pmRA, RA, Vmag
+
+"
+"2","The following objects are masked from hip (pos = 9):
+
+    B.V, DE, e_Plx, HIP, Plx, pmDE, pmRA, RA, Vmag
+
+"
+"2","The following objects are masked from hip (pos = 10):
+
+    B.V, DE, e_Plx, HIP, Plx, pmDE, pmRA, RA, Vmag
+
+"
+"2","The following objects are masked from hip (pos = 11):
+
+    B.V, DE, e_Plx, HIP, Plx, pmDE, pmRA, RA, Vmag
+
+"
+"2","The following objects are masked from hip (pos = 12):
+
+    B.V, DE, e_Plx, HIP, Plx, pmDE, pmRA, RA, Vmag
+
+"
+"2","The following objects are masked from hip (pos = 13):
+
+    B.V, DE, e_Plx, HIP, Plx, pmDE, pmRA, RA, Vmag
+
+"
+"2","The following objects are masked from hip (pos = 14):
+
+    B.V, DE, e_Plx, HIP, Plx, pmDE, pmRA, RA, Vmag
+
+"
+"2","The following objects are masked from hip (pos = 16):
+
+    B.V, DE, e_Plx, HIP, Plx, pmDE, pmRA, RA, Vmag
+
+"
+"0","par(mfrow=c(2,5))"
+"0","plot(RA[50:100])"

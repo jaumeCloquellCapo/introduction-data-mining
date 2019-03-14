@@ -1,0 +1,7 @@
+"0","```r
+factor(c(levels(responses), \"Strongly Disagree\"), levels=c(\"Strongly Agree\", \"Agree\",
+\"Disagree\", \"Strongly Disagree\"), ordered = TRUE)
+```"
+"1","[1] Agree             Disagree          Strongly Agree    Strongly Disagree
+Levels: Strongly Agree < Agree < Disagree < Strongly Disagree
+"

@@ -1,0 +1,1 @@
+"0","ggplot(data=ex1, aes(x=stretch, y=distance)) + geom_bar(stat=""identity"")"

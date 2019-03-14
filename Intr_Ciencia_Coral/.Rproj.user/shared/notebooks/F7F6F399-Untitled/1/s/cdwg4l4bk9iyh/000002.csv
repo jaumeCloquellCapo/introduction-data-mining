@@ -1,0 +1,8 @@
+"0","```r
+table(iris$Sepal.Length < 5, iris$Species)
+```"
+"1","       
+        setosa versicolor virginica
+  FALSE     30         49        49
+  TRUE      20          1         1
+"

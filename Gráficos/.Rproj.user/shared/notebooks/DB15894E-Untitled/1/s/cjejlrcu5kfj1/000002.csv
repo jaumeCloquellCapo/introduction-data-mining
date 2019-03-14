@@ -1,0 +1,5 @@
+"0","```r
+x1 <- x
+x1[ ,2] <- x[ ,2][order(x[, 2], decreasing = TRUE)]
+x1
+```"

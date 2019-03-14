@@ -1,0 +1,4 @@
+"0","```r
+ students.new  <- data.frame(\"sym\" = sym, \"colours\" = colours)
+ students.new 
+```"

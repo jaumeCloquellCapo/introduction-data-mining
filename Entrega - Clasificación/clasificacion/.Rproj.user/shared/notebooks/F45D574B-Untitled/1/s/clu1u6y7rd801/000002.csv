@@ -1,0 +1,8 @@
+"0","# Create training and test data"
+"0","shuffle_ds <- sample(dim(wbcd_n)[1])"
+"0","eightypct <- (dim(wbcd_n)[1] * 80) %/% 100"
+"0","wbcd_train <- wbcd_n[shuffle_ds[1:eightypct], ]"
+"0","wbcd_test <- wbcd_n[shuffle_ds[(eightypct+1):dim(wbcd_n)[1]], ]"
+"0","# Create labels for training and test data"
+"0","wbcd_train_labels <- wbcd[shuffle_ds[1:eightypct], 1]"
+"0","wbcd_test_labels <- wbcd[shuffle_ds[(eightypct+1):dim(wbcd_n)[1]], 1]"

@@ -1,0 +1,14 @@
+"0","```r
+z <- factor(c(\"p\", \"q\", \"p\", \"r\", \"q\"))
+z
+```"
+"1","[1] p q p r q
+Levels: p q r
+"
+"0","```r
+levels(z)[1] <- \"w\"
+z
+```"
+"1","[1] w q w r q
+Levels: w q r
+"

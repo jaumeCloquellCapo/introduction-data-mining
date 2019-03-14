@@ -1,0 +1,4 @@
+"0","ex3.celsiusAnMm <- ex3"
+"0","ex3.celsiusAnMm[ ,c(2:8)] <- 5/9 * (ex3.celsiusAnMm[ ,c(2:8)] - 32)"
+"0","ex3.celsiusAnMm[ ,c(9:12)] <- ex3.celsiusAnMm[ ,c(9:12)] * 25.4"
+"0","ex3.celsiusAnMm"

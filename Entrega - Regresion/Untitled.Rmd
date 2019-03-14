@@ -1,0 +1,214 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+TAREA (para evaluación continua):
+Reproduzca el estudio para el conjunto de datos
+California y suba el/los fichero/s .R a PRADO en
+la actividad correspondiente
+
+Cargamos los datos que se encuentran en "california.dat" dentro de la varaiabel xtra
+
+```{r}
+xtra <- read.csv("california.dat", comment.char="@")
+names(xtra) <- c("Longitude", "Latitude", "HousingMedianAge",
+"TotalRooms", "TotalBedrooms", "Population", "Households",
+"MedianIncome", "MedianHouseValue")
+n <- length(names(xtra)) - 1
+names(xtra)[1:n] <- paste ("X", 1:n, sep="")
+names(xtra)[n+1] <- "Y"
+```
+
+
+El primer paso a la hora de establecer un modelo lineal multiple es estudiar la relación que existe entre las variables y con ello identificar cuáles pueden ser los mejores predictores para el modelo.
+
+Las dos formas principales de hacerlo son mediante representaciones gráficas (gráficos de dispersión) y el cálculo del coeficiente de correlación de cada par de variables.
+
+```{r}
+ggpairs(xtra, lower = list(continuous = "smooth", binwidth = 1), diag = list(continuous = "barDiag", binwidth = 1), axisLabels = "none")
+round(cor(x = xtra, method = "pearson"), 3)
+```
+Del análisis preliminar se pueden extraer las siguientes conclusiones. En la explicación utilizaremos los nombres originales para facilitar su intepretación.
+
+**Las variables con mayor correlación linear con MedianHouseValue: MedianIncome, TotalRooms, Latitude HousingMedianAge. Ordenados de mayor a menor correlación.
+**Todas las variable excepto las variables latitude y longitude son las únicas que puede asimilar “cierta” distribución normal asimétrica.
+
+Para decidir qué predictores contribuyen significativamente al modelo utilizaremos la extratégia backawrd Cojeremos las variables y iremos eliminando las que tengan menor correlación respecto a la variable MedianHouseValue
+
+```{r}
+ml1 <- lm(Y~.,xtra)
+ml2 <- lm(Y~.X6 ,xtra)
+ml3 <- lm(Y~.-X7-X3 ,xtra)
+ml4 <- lm(Y~X8,xtra)
+summary(ml1)
+summary(ml2)
+summary(ml3)
+summary(ml4)
+```
+El modelo ml1, que contiene todas las variables como predictores tienen un elevado R2 ajustado (0,637), es capaz dexplicar el 67% de la variabilidad observada además de un p-value significativo. Un valor de p < 0.05, proporciona evidencia de que el coeficiente es diferente a 0. El p-valor asociado al contraste (2.2e-16) es menor que a = 0.05 , por lo que rechazamos la hipótesis nula. Esto implica que al menos una de las variables independientes contribuye de forma significativa a la explicación de la variable respuesta. 
+
+La variable Households, con un p-valores de 1.19e-10 es mayor que 0.05, por lo que no rechazamos la hipótesis nula de significación de esta variable. Esta variable no es válida para predecir el precio de la vivienda y por tanto se puede eliminar del modelo.
+
+En ml2, el modelo sin la variable Households, contiene el mismo p-value y un R2 ajustado (0.6363) un poco menor al anterior modelo (0.001) pero como una diferencia es insignificante y  se trata de un modelo más sencillo, lo que favorece a su interpretación, lo consideraremos un mejor canditato respeto a ml1.
+
+Si eliminamos otra variable, como por ejemplo HousingMedianAge, en el modelo ml3, vemos como el r2 ajustado disminuye considerablemente.
+
+El modelo ml4 con solo la variable MedianIncome como predictor tiene un R2 ajustado medio (0.4734), es capaz de explicar el 47% de la variabilidad observada en el precio de la vivienda, un valor bajo comparado con el resto. El p-value es significativo. Por tanto, lo descartamos como posible modelo.
+
+El modelo elegido es el m2. Dado que el modelo ml2 es que nos ofrece una mayor r-squared ajusted y un menor p-value y además dado que F = 5158 > 2.2e-16, implica que podemos rechazar Ho.
+
+Cuando se introduce más de una variable en el modelo de regresión es necesario contrastar además la independencia de los efectos de todas ellas. Es decir, se supone que la asociación de cada variable con la respuesta no depende del valor que tomen el resto en la ecuación de regresión. En otro caso se dirá que existe interacción. Antes de aprobar el modelo definitivo, por lo tanto, se debe explorar la necesidad de incluir términos de interacción calculados a partir del producto de pares de variables, comprobando si mejora la predicción.
+
+# operador |    ejemplo    | interpretación
+#----------+---------------+-----------------------------------------------------#
+#    +     |      + x      | incluye esta variable
+#    -     |      - x      | quita esta variable
+#    :     |      x:z      | incluye la interacción entre estas variables
+#    *     |      x*z      | incluye ambas variables y la interacción entre ambas
+#    /     |      x/z      | anidamiento: incluye a z anidado en x
+#    |     |      x|z      | condicional: incluye a x dado z
+#    ^     | (u + v + w)^3 | incluye estas variables y todas las interacciones hasta 3 vías
+#   poly   |   poly(x, 3)  | regresión polinómica (polinomios ortogonales)
+#  Error   |   Error(a/b)  | especifía un término de error
+#    I     |    I(x * z)   | incluye una nueva variable, la cual es el resultado de las operaciones internas al paréntesis.
+#    1     |      - 1      | intercepto, generalmente usado para ser borrado
+
+Probamos en interactuar las dos variables con más correlaciones
+```{r}
+summary(lm(Y~X1*X2+X3+X4+X5+X6+X8, xtra))$adj.r.squared
+summary(lm(Y~X1+X3+X4+X5+X6+X8*X2, xtra))$adj.r.squared
+summary(lm(Y~X1+X3+X4+X5+X6+X8*X2, xtra))$adj.r.squared
+summary(lm(Y~X1+X3+X4+X5+X6+I(X8*X2), xtra))$adj.r.squared
+summary(lm(Y~.+I(X8^2)+I(X4^2)+I(X2^2)-X7, xtra))$adj.r.squared
+summary(lm(Y~.+I(X8^2)+I(X2^2)-X7, xtra))$adj.r.squared
+ml2A <-summary(lm(Y~.+I(X8^2)+I(X2^2)-X7, xtra))$adj.r.squared
+```
+La último interacción es la que nos ofrece un incremento mayor, con un valor de 0.01 respecto al modelo original, que aunque no es mucho, es una mejora.
+
+Raíz del error cuadrático medio (RMSE) 
+
+```{r}
+ml2.rmse <-sqrt(mean(residuals(ml2)^2))
+ml2.rmse
+```
+
+Comparativa entre LM y KMM
+
+```{r}
+nombre <- "california"
+run_lm_fold <- function(i, x, tt = "test") {
+file <- paste(x, "-5-", i, "tra.dat", sep=""); 
+x_tra <- read.csv(file, comment.char="@") 
+file <- paste(x, "-5-", i, "tst.dat", sep=""); 
+x_tst <- read.csv(file, comment.char="@") 
+In <- length(names(x_tra)) - 1
+names(x_tra)[1:In] <- paste ("X", 1:In, sep="");
+names(x_tra)[In+1] <- "Y"
+names(x_tst)[1:In] <- paste ("X", 1:In, sep="");
+names(x_tst)[In+1] <- "Y"
+if (tt == "train") { test <- x_tra }
+else { test <- x_tst }
+fitMulti=lm(Y~.+I(X8^2)+I(X2^2)-X7, xtra)
+yprime=predict(fitMulti,test)
+}
+run_knn_fold <- function(i, x, tt = "test") {
+  file <- paste(x, "-5-", i, "tra.dat", sep="")
+  x_tra <- read.csv(file, comment.char="@")
+  file <- paste(x, "-5-", i, "tst.dat", sep="")
+  x_tst <- read.csv(file, comment.char="@")
+  In <- length(names(x_tra)) - 1
+  names(x_tra)[1:In] <- paste ("X", 1:In, sep="") 
+  names(x_tra)[In+1] <- "Y"
+  names(x_tst)[1:In] <- paste ("X", 1:In, sep="") 
+  names(x_tst)[In+1] <- "Y"
+  if (tt == "train") {
+    test <- x_tra
+    } 
+  else { 
+    test <- x_tst
+    }
+  fitMulti=kknn(Y ~.+I(X8^2)+I(X2^2)-X7,x_tra,test)
+  yprime=fitMulti$fitted.values
+}
+```
+
+K-NN - Obtención del modelo para un conjunto de datos
+```{r}
+require(kknn)
+require(MASS)
+
+fitknn1 <- kknn(Y ~ ., xtra, xtra)
+yprime = fitknn1$fitted.values
+sqrt(sum((xtra$Y-yprime)^2)/length(yprime)) #RMSE
+
+fitknn2 <- kknn(Y ~ .-X7, xtra, xtra)
+yprime = fitknn2$fitted.values
+sqrt(sum((xtra$Y-yprime)^2)/length(yprime)) #RMSE
+
+fitknn3 <- kknn(Y ~ . + X8:X7, xtra, xtra) 
+yprime = fitknn3$fitted.values;
+sqrt(sum((xtra$Y-yprime)^2)/length(yprime)) #RMSE
+```
+El mejor modelo con la RL múltiple por la interacción (fitknn2) obtiene RMSE=39445.74.
+
+Raíz del error cuadrático medio (RMSE) 
+
+```{r}
+yprime = fitknn1$fitted.values
+sqrt(sum((xtra$Y-yprime)^2)/length(yprime)) #RMSE
+```
+```{r}
+lmMSEtrain <- mean(sapply(1:5,run_lm_fold,nombre,"train"))
+lmMSEtest <-mean(sapply(1:5,run_lm_fold,nombre,"test"))
+knnMSEtrain <- mean(sapply(1:5,run_knn_fold,nombre,"train")) 
+knnMSEtest <- mean(sapply(1:5,run_knn_fold,nombre,"test"))
+lmMSEtrain
+lmMSEtest
+knnMSEtrain
+knnMSEtest
+```
+
+Comparativa por pares de LM y KNN
+```{r}
+resultados <- read.csv("regr_test_alumnos.csv")
+tablatst <- cbind(resultados[,2:dim(resultados)[2]])
+colnames(tablatst) <- names(resultados)[2:dim(resultados)[2]]
+rownames(tablatst) <- resultados[,1]
+#leemos la tabla con los errores medios de entrenamiento
+resultados <- read.csv("regr_train_alumnos.csv")
+tablatra <- cbind(resultados[,2:dim(resultados)[2]])
+colnames(tablatra) <- names(resultados)[2:dim(resultados)[2]]
+rownames(tablatra) <- resultados[,1]
+```
+
+
+```{r}
+difs <- (tablatst[,1] - tablatst[,2]) / tablatst[,1]
+wilc_1_2 <- cbind(ifelse (difs<0, abs(difs)+0.1, 0+0.1), ifelse (difs>0, abs(difs)+0.1, 0+0.1))
+colnames(wilc_1_2) <- c(colnames(tablatst)[1], colnames(tablatst)[2])
+head(wilc_1_2)
+```
+
+```{r}
+LMvsKNNtst <- wilcox.test(wilc_1_2[,1], wilc_1_2[,2], alternative = "two.sided", paired=TRUE)
+Rmas <- LMvsKNNtst$statistic
+pvalue <- LMvsKNNtst$p.value
+LMvsKNNtst <- wilcox.test(wilc_1_2[,2], wilc_1_2[,1], alternative = "two.sided", paired=TRUE)
+Rmenos <- LMvsKNNtst$statistic
+Rmas
+Rmenos
+pvalue
+```
+
+Test friedman param LM, Knn y M5
+```{r}
+test_friedman <- friedman.test(as.matrix(tablatst))
+test_friedman
+tam <- dim(tablatst)
+groups <- rep(1:tam[2], each=tam[1])
+pairwise.wilcox.test(as.matrix(tablatst), groups, p.adjust = "holm", paired = TRUE)
+```
+
+
+

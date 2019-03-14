@@ -1,0 +1,6 @@
+"0","```r
+row.names(USArrests)[which(USArrests$UrbanPop > quantile(USArrests$UrbanPop)[[4]])]
+```"
+"1"," [1] \"Arizona\"       \"California\"    \"Colorado\"      \"Florida\"       \"Hawaii\"        \"Illinois\"      \"Massachusetts\" \"Nevada\"       
+ [9] \"New Jersey\"    \"New York\"      \"Rhode Island\"  \"Texas\"         \"Utah\"         
+"

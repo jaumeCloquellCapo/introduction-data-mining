@@ -1,0 +1,8 @@
+"0","```r
+row.names(star_wars_matrix) <- c(\"Box office Star Wars: In Millions (!) First element: US\", \"Second element: NON-US\")
+star_wars_matrix
+```"
+"1","                                                        new_hope empire_strikes return_jedi
+Box office Star Wars: In Millions (!) First element: US  460.998       290.4751    309.3062
+Second element: NON-US                                   314.400       247.9000    165.8000
+"

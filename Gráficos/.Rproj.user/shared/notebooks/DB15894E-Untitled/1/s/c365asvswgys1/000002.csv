@@ -1,0 +1,6 @@
+"0","```r
+colours <- ifelse(students$population == \"kuopio\", \"Blue\", \"Red\")
+colours
+```"
+"1"," [1] \"Blue\" \"Blue\" \"Blue\" \"Blue\" \"Blue\" \"Blue\" \"Blue\" \"Red\"  \"Red\"  \"Red\"  \"Red\"  \"Red\"  \"Red\"  \"Red\"  \"Red\"  \"Red\"  \"Red\" 
+"

@@ -1,0 +1,11 @@
+"0","```r
+y$something[y$something < 0 | y$something > 4]
+```"
+"1","[1] -5 -4 -3 -2 -1  5  6
+"
+"0","```r
+x[x < 0 | x > 4]
+```"
+"1"," something1  something2  something3  something4  something5 something11 something12 
+         -5          -4          -3          -2          -1           5           6 
+"

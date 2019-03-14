@@ -1,0 +1,4 @@
+"0","```r
+women = cbind(women, BMI)
+women$BMI <- women$BMI[order(women$BMI)]
+```"

@@ -1,0 +1,6 @@
+"0","```r
+rowSums(star_wars_matrix)
+```"
+"1","Box office Star Wars: In Millions (!) First element: US                                  Second element: NON-US 
+                                               1060.779                                                 728.100 
+"

@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1543264893372.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "8F94A5FE",
+    "lastKnownWriteTime" : 1543266417,
+    "last_content_update" : 1543266417484,
+    "path" : "~/Desktop/R/introducción a la ciencia de datos/Entrega - Regresion/Untitled.Rmd",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "23,19",
+        "scrollLine" : "6",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

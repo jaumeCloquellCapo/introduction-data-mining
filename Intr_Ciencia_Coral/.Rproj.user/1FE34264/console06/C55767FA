@@ -1,0 +1,8 @@
+git ]0;~/Desktop/R/Intr_Ciencia_Coral[?1034hMacBook-Pro-de-jaume:Intr_Ciencia_Coral jaumecloquell$ git dd[K[Ksttus
+git: 'sttus' is not a git command. See 'git --help'.
+
+The most similar command is
+	status
+]0;~/Desktop/R/Intr_Ciencia_CoralMacBook-Pro-de-jaume:Intr_Ciencia_Coral jaumecloquell$ git sttusatus
+fatal: not a git repository (or any of the parent directories): .git
+]0;~/Desktop/R/Intr_Ciencia_CoralMacBook-Pro-de-jaume:Intr_Ciencia_Coral jaumecloquell$ plo

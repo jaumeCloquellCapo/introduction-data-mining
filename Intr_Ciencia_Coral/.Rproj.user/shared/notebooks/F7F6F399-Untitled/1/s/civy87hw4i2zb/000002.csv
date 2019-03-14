@@ -1,0 +1,4 @@
+"0","```r
+mpgClass <- ifelse(mtcars$mpg < mean(mtcars$mpg), \"Low\", \"Hight\")
+mtcars$mpgClass <-mpgClass
+```"

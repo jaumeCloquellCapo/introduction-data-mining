@@ -1,0 +1,7 @@
+"0","```r
+visits <- all_wars_matrix[3, ]/5
+visits
+```"
+"1","      new_hope empire_strikes    return_jedi 
+     155.07960      107.67501       95.02124 
+"

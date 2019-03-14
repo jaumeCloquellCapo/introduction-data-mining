@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1541694849306.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3910829099",
+    "id" : "389E5CAC",
+    "lastKnownWriteTime" : 1541958008,
+    "last_content_update" : 1542038525107,
+    "path" : "~/Desktop/R/Intr_Ciencia_Coral/Untitled.Rmd",
+    "project_path" : "Untitled.Rmd",
+    "properties" : {
+        "cursorPosition" : "106,13",
+        "docOutlineVisible" : "0",
+        "last_setup_crc32" : "",
+        "scrollLine" : "103",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

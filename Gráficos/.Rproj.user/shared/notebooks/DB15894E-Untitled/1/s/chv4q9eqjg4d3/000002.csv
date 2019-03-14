@@ -1,0 +1,7 @@
+"0","```r
+table(students$population)
+```"
+"1","
+ kuopio tampere 
+      7      10 
+"

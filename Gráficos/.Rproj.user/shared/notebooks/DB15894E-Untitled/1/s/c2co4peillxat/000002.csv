@@ -1,0 +1,6 @@
+"0","```r
+non_us_all <- mean(star_wars_matrix[2, c(1, 2)])
+non_us_all
+```"
+"1","[1] 281.15
+"

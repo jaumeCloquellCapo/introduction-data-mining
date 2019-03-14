@@ -1,0 +1,5 @@
+"0","```r
+colnames(students)
+```"
+"1","[1] \"height\"     \"shoesize\"   \"gender\"     \"population\"
+"

@@ -1,0 +1,11 @@
+"0","```r
+y$something[y$something < 0]
+```"
+"1","[1] -5 -4 -3 -2 -1
+"
+"0","```r
+x[x < 0]
+```"
+"1","something1 something2 something3 something4 something5 
+        -5         -4         -3         -2         -1 
+"

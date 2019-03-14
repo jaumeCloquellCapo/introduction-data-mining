@@ -1,0 +1,2 @@
+"0","plot(iris$Sepal.Length, pch=16,iris$Petal.Length, col=iris$Species,"
+"0","main=""PLOT"", xlab=""Sepal length"", ylab=""Petal length"")"

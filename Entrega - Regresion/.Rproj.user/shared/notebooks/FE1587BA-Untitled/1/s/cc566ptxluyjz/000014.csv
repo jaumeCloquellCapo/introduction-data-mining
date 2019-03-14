@@ -1,0 +1,1 @@
+"0","ggplot(ex2, aes(year)) + ggtitle(""Plot snow.cover versus year"") + geom_line(aes(y = snow.cover, colour = ""Cover""), size = 2) + scale_colour_manual(values = c(""cornflowerblue"")) + scale_x_continuous(breaks = seq(ex2$year[1], ex2$year[length(ex2$year)], by = 1))"

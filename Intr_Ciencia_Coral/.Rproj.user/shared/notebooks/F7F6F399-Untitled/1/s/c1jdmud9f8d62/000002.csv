@@ -1,0 +1,11 @@
+"0","```r
+x <- as.numeric(c(1:10))
+is.vector(x)
+```"
+"1","[1] TRUE
+"
+"0","```r
+is.numeric(x)
+```"
+"1","[1] TRUE
+"

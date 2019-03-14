@@ -1,0 +1,1 @@
+"0","plot(ex2$year, ex2$snow.cover, main=""PLOT 2"", xlab=""Year"", ylab=""Cover"")"

@@ -1,0 +1,5 @@
+"0"," library(ggplot2)"
+"0","xtra <- read.csv(""california.dat"", comment.char=""@"")"
+"0","names(xtra) <- c(""Longitude"", ""Latitude"", ""HousingMedianAge"","
+"0","""TotalRooms"", ""TotalBedrooms"", ""Population"", ""Households"","
+"0","""MedianIncome"", ""MedianHouseValue"")"

@@ -1,0 +1,6 @@
+"0","```r
+stundent.male <- which(students$gender == \"male\")
+stundent.male
+```"
+"1","[1]  1  4  5 13 14 15 16 17
+"

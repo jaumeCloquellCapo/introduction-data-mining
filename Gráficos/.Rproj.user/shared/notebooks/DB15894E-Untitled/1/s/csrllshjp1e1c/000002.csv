@@ -1,0 +1,4 @@
+"0","```r
+df2 <- cbind(state.x77, df2)
+df2
+```"

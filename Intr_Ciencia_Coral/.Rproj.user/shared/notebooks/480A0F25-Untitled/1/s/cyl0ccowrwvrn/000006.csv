@@ -1,0 +1,2 @@
+"0","plot(hip$RA, hip$DE, main=""Scatterplot"", "
+"0","  	xlab=""RA "", ylab=""DE "", pch=20, col = ifelse(hip$DE > 0,'red','blue'))"

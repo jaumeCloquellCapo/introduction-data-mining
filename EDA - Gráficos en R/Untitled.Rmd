@@ -1,0 +1,76 @@
+---
+title: "Untitled"
+output: html_document
+---
+Exercises
+1) Plot distance against stretch.
+
+```{r}
+ex1 <- data.frame(stretch=c(46,54,48,50,44,42,52), distance=c(148,182,173,166,109,141,166))
+ex1
+```
+
+```{r}
+ggplot(data=ex1, aes(x=stretch, y=distance)) + geom_bar(stat="identity")
+```
+
+
+2) The follwing data have ten observations taken during the years 1970-79, on October snow cover for Eurasia (snow cover is in millions of square kilometers).
+
+```{r}
+ex2 <- data.frame(year=c(1970:1979), snow.cover=c(6.5,12.0,14.9,10.0,10.7,7.9,21.9,12.5,14.5,9.2))
+ex2
+```
+
+Plot snow.cover versus year.
+
+```{r}
+ggplot(ex2, aes(year)) + ggtitle("Plot snow.cover versus year") + geom_line(aes(y = snow.cover, colour = "Cover"), size = 2) + scale_colour_manual(values = c("cornflowerblue")) + scale_x_continuous(breaks = seq(ex2$year[1], ex2$year[length(ex2$year)], by = 1))
+```
+
+
+Plot a histogram of the snow.cover values.
+
+```{r}
+ggplot(ex2, aes(x=snow.cover)) + geom_histogram(binwidth=3)
+```
+
+3) Given the following data:
+```{r}
+ex3 = read.table("dataset.txt", header = TRUE, sep = ',', na.strings = 'NR')
+```
+
+Create a function to convert ºF to ºC and in (inches) to mm.
+C = 5/9 (F - 32)
+1 hinches = 25,4 mm
+```{r}
+ex3.celsiusAnMm <- ex3
+ex3.celsiusAnMm[ ,c(2:8)] <- 5/9 * (ex3.celsiusAnMm[ ,c(2:8)] - 32)
+ex3.celsiusAnMm[ ,c(9:12)] <- ex3.celsiusAnMm[ ,c(9:12)] * 25.4
+ex3.celsiusAnMm
+as.data.frame(ex3.celsiusAnMm)
+library(ggplot2)
+```
+
+Plot Year vs. Warmest Minimum Temperature.
+```{r}
+pl1 <- ggplot(ex3.celsiusAnMm, aes(Year)) + ggtitle("Plot Year vs. Warmest Minimum Temperature and Coldest Minimum
+Temperature")
+pl1 <- pl1 + geom_line(aes(y = Warmest.Minimum.Temperature..F., colour = "Warnest"), size = 2)
+pl1 <- pl1 + labs(title = "Plot Year vs. Warmest Minimum Temperature", x = "Year", y = "Temperature") 
+pl1 <- pl1 + scale_colour_manual(values = c("cornflowerblue")) 
+pl1
+```
+Plot Year vs. Warmest Minimum Temperature and Coldest Minimum
+Temperature. Don’t forget to add a legend!
+```{r}
+pl2 <- ggplot(ex3.celsiusAnMm, aes(Year)) + ggtitle("Plot Year vs. Warmest Minimum Temperature and Coldest Minimum
+Temperature")
+pl2 <- pl2 + geom_line(aes(y = Warmest.Minimum.Temperature..F., colour = "Warnest"), size = 2)
+pl2 <- pl2 + geom_line(aes(y = Coldest.Minimum.Temperature..F., colour = "Coldest"), size = 2)
+pl2 <- pl2 + labs(title = "Plot Year vs. Warmest Minimum Temperature and Coldest Minimum
+Temperature", x = "Year", y = "Temperature") 
+pl2 <- pl2 + scale_colour_manual(values = c("cornflowerblue", "darkslateblue")) 
+pl2
+```
+

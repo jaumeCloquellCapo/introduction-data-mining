@@ -1,0 +1,3 @@
+"0","hist(iris$Petal.Length,"
+"0","main=""Histogram of Petal.Length"","
+"0","xlab=""Petal Petal.Length"", ylab=""Frecuency"")"

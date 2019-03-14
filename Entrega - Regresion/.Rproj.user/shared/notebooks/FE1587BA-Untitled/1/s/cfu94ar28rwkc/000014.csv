@@ -1,0 +1,1 @@
+"0","ggplot(ex2, aes(x=snow.cover)) + geom_histogram(binwidth=3)"

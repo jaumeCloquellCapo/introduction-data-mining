@@ -1,0 +1,4 @@
+"0","```r
+x <- factor(c(\"high\", \"low\", \"medium\", \"high\", \"high\", \"low\", \"medium\"))
+data.frame(\"level\" = levels(x), \"value\" = c(1, 2, 3))
+```"

@@ -1,0 +1,8 @@
+"0","pl2 <- ggplot(ex3.celsiusAnMm, aes(Year)) + ggtitle(""Plot Year vs. Warmest Minimum Temperature and Coldest Minimum"
+"0","Temperature"")"
+"0","pl2 <- pl2 + geom_line(aes(y = Warmest.Minimum.Temperature..F., colour = ""Warnest""), size = 2)"
+"0","pl2 <- pl2 + geom_line(aes(y = Coldest.Minimum.Temperature..F., colour = ""Coldest""), size = 2)"
+"0","pl2 <- pl2 + labs(title = ""Plot Year vs. Warmest Minimum Temperature and Coldest Minimum"
+"0","Temperature"", x = ""Year"", y = ""Temperature"") "
+"0","pl2 <- pl2 + scale_colour_manual(values = c(""cornflowerblue"", ""darkslateblue"")) "
+"0","pl2"

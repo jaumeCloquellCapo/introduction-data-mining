@@ -1,0 +1,4 @@
+"0","```r
+df2 <- data.frame(state.abb, state.area, state.division, state.name, state.region, row.names = state.name)
+df2
+```"

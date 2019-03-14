@@ -1,0 +1,10 @@
+"0","```r
+means <- rowMeans(star_wars_matrix)
+means
+```"
+"1","Box office Star Wars: In Millions (!) First element: US                                  Second element: NON-US 
+                                               353.5931                                                242.7000 
+"
+"0","```r
+non_us_all <- means[[2]]
+```"

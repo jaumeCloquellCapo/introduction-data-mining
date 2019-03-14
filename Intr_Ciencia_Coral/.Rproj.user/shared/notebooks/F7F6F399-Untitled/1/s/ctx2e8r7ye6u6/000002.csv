@@ -1,0 +1,5 @@
+"0","```r
+students$sym <- ifelse(students$gender == \"male\", \"M\", \"F\")
+students$colours <- ifelse(students$population == \"kuopio\", \"Blue\", \"Red\")
+students
+```"

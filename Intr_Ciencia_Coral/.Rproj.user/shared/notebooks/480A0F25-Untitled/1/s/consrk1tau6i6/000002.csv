@@ -1,0 +1,4 @@
+"0","plot(hip$RA, hip$DE, hip$pmRA, hip$pmDE, hip$e_Plx, hip$B.V)```
+"
+"2","Error: se intenta usar un nombre de varible de longitud cero
+"

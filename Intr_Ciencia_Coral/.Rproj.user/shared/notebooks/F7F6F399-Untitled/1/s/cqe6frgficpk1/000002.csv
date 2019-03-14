@@ -1,0 +1,52 @@
+"0","```r
+my_list <- list(name=\"Fred\", wife=\"Mary\", no.children=3, child.ages=c(4,7,9)) ##crear una lista de 4 elementos, dos contienen un vector de string y el resto vectores de números
+attributes(my_list) ## nos proporciona información acerca del nombre de la listas
+```"
+"1","$names
+[1] \"name\"        \"wife\"        \"no.children\" \"child.ages\" 
+"
+"0","```r
+names(my_list) ## nos proporciona información acerca del nombre de la listas
+```"
+"1","[1] \"name\"        \"wife\"        \"no.children\" \"child.ages\" 
+"
+"0","```r
+my_list[2]  ## accedemos al 2 elemento dentro de la lista
+```"
+"1","$wife
+[1] \"Mary\"
+"
+"0","```r
+my_list[[2]] ## accedemos al vector que se encuentron dentro del 2 elemento de la lista
+```"
+"1","[1] \"Mary\"
+"
+"0","```r
+my_list$wife  ## intentamos acceder a un elemento dentro de la lista inexistente
+```"
+"1","[1] \"Mary\"
+"
+"0","```r
+my_list[[4]][2] ## accedemos al 2 elemento dentro del vector que se encuentron dentro del 4 elemento de la lista
+```"
+"1","[1] 7
+"
+"0","```r
+length(my_list[[4]]) ## nos devuelve la longitut del vector que se encuentron dentro del 4 elemento de la lista
+```"
+"1","[1] 3
+"
+"0","```r
+my_list$wife <- 1:12   ## creamos un nuevo elemento llamado wife que contiene un vector del 1 al 12
+my_list$wife <- NULL ## asigamos al elemento wife null
+my_list <- c(my_list, list(my_title2=month.name[1:12])) ## concatenamos la lista existente con una nueva que contiene un elemento llamado my_title2
+unlist(my_list) ## creamos un vector a partir de la lista
+```"
+"1","       name no.children child.ages1 child.ages2 child.ages3  my_title21  my_title22  my_title23  my_title24  my_title25  my_title26 
+     \"Fred\"         \"3\"         \"4\"         \"7\"         \"9\"   \"January\"  \"February\"     \"March\"     \"April\"       \"May\"      \"June\" 
+ my_title27  my_title28  my_title29 my_title210 my_title211 my_title212 
+     \"July\"    \"August\" \"September\"   \"October\"  \"November\"  \"December\" 
+"
+"0","```r
+data.frame(unlist(my_list)) ## creamos un dataframe a partir del vector creado a partir de la lista
+```"

@@ -1,0 +1,8 @@
+"0","```r
+z <- c(\"p\", \"a\" , \"g\", \"t\", \"b\")
+x <- factor(z)
+x
+```"
+"1","[1] p a g t b
+Levels: a b g p t
+"

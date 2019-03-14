@@ -1,0 +1,12 @@
+"0","```r
+male <- which(students$gender == \"male\")
+female <- which(students$gender != \"male\")
+male
+```"
+"1","[1]  1  4  5 13 14 15 16 17
+"
+"0","```r
+female
+```"
+"1","[1]  2  3  6  7  8  9 10 11 12
+"

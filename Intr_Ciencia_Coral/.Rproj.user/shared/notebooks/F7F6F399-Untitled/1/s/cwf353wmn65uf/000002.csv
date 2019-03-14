@@ -1,0 +1,7 @@
+"0","```r
+with(students, table(colnames(students)))
+```"
+"1","
+    gender     height population   shoesize 
+         1          1          1          1 
+"

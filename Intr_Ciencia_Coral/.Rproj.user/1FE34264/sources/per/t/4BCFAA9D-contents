@@ -1,0 +1,1113 @@
+---
+title: "ENTREGA CORAL"
+author: "JAIME CLOQUELL CAPO"
+output:
+  html_document:
+    df_print: paged
+  word_document: default
+  html_notebook: default
+  pdf_document: default
+---
+
+## R I PARTE
+
+### R Interactivo
+***
+**Crea números del 1 al 30**
+```{r}
+1:30
+```
+
+**Crea una secuencia de números impares**
+```{r}
+seq(1,by=2, length.out = 10)
+```
+
+**Busca en la ayuda que hace la función seq(). Describe que hace. Utilízala para crear números del 1 al 30 con un incremento de 0.5**
+```{r}
+help("seq")
+```
+
+Genera una secuencia. Posee ciertos parámetros como by, length.out o along.with:
+
+1. By
+  + El valor de incremento
+2. length.out
+  + El número de resultados que se quiere obtener
+3. along.with
+    + Coge la longitut de la variable pasada en este parámetro
+
+```{r}
+seq(from=1, to=30, by= 0.5)
+```
+
+**Crea una secuencia de números indicando el principio y la longitud de la secuencia de números**
+```{r}
+seq(0, length.out = 10)
+```
+
+**Crea letras minúsculas, mayúsculas, nombre de los meses del año y nombre de los meses del año abreviado**
+```{r}
+letters
+LETTERS
+month.name
+month.abb
+```
+
+**Investiga la función rep(). Repite un vector del 1 al 8 cinco veces.**
+```{r}
+rep(1:8, 5)
+```
+
+**Haz lo mismo con las primeras ocho letras del abecedario en mayúsculas**
+```{r}
+rep(LETTERS[1:8], 5)
+```
+### Vectores
+***
+
+**Crea los siguientes vectores:**
+
+1. un vector del 1 al 20
+2. un vector del 20 al 1
+3. Utilizando el comando c() crea un vector que tenga el siguiente patrón 1,2,3,4,5…20,19,18,17….1
+    
+```{r}
+1:20
+```
+```{r}
+20:1
+```
+```{r}
+c(1:5, 20:1)
+```
+
+**Genera una secuencia de números del 1 al 30 utilizando el operador : y asígnalo al vector x. El vector resultante x tiene 30 elementos. Recuerda que el operador ‘:’ tiene prioridad sobre otros operadores aritméticos en una expresión. Genera un vector x que contenga números del 1 al 9. Utilizando el operador ‘:’ .  y utilizando otras opciones.  PISTA: seq()**
+
+```{r}
+x <- 1:30
+x
+```
+```{r}
+x <- 1:9
+x
+```
+```{r}
+seq(1, 9)
+```
+
+**Genera un vector x que contenga 9 números comprendidos entre 1 y 5**
+```{r}
+seq(1, 5, length.out = 9)
+```
+
+
+**Busca que hace la función sequence(). ¿Cual es la diferencia con la función seq()**
+ Crea un vector de secuencias en cambio, seq(), solo genera una sequencia.
+ **Crea un vector numérico utilizando la función c()**
+```{r}
+x <- as.numeric(c(1:10))
+is.vector(x)
+is.numeric(x)
+```
+ 
+
+**Accede al segundo elemento del vector**
+```{r}
+c(1:10)[2]
+```
+
+**Crea un vector numérico “z” que contenga del 1 al 10. Cambia el modo del vector a carácter.**
+```{r}
+z <- c(1:10)
+z
+```
+```{r}
+as.character(z)
+```
+
+**Ahora cambia el vector z a numérico de nuevo**
+```{r}
+as.numeric(z)
+```
+
+**Busca en la ayuda que hace la función scan(). Utilízala para leer un fichero cualquiera y asigna la lectura a un vector “z”.**
+ Leer datos dentro deun vector o una lista o un fichero.
+```{r}
+z <- scan("file.txt")
+```
+
+
+**Crea un vector x con 100 elementos, selecciona de ese vector una muestra al azar de tamaño 5. Busca que hace la función sample().**
+
+```{r}
+sample(1:100, 5)
+```
+La función sample() permite tomar una muestra aleatoria simple a partir de un vector de
+valores con o sin reemplazamiento.
+
+sample(x, size, replace=FALSE, prob=NULL)
+
+donde x es un vector de donde se quieren elegir los elementos o un entero positivo n (en
+este caso se interpreta como el vector generado por 1:n), size es un entero positivo que
+indica el número de elementos que se quieren elegir. Si quieres que puedan repetirse los números aleatorios (es decir, obtener por ejemplo dos números 3), dejamos el valor T (true). Si no queremos repetición, ponemos el valor F (false). Por último en prob se puede incluir un vector de probabilidades en el
+que cada componente será la probabilidad con la q
+
+**Genera un vector de tipo con 100 números entre el 1 y el 4 de forma random. Para ello mira en la ayuda la función runif(). Obliga a que el vector resultante se ade tipo integer. Ordena el vector por tamaño usando la función sort(). ¿Qué devuelve la función sort?. Si quisieras invertir el orden de los elementos del vector que función utilizarías. Utiliza la función order() sobre x. ¿Cuál es la diferencia con la función sort()?**
+```{r}
+x <- runif(100, 1, 4)
+```
+
+```{r}
+class(x)
+```
+```{r}
+sort(x)
+```
+Devuelve el vector ordenado
+```{r}
+sort(x, decreasing = TRUE)
+```
+
+```{r}
+x[order(x)]
+```
+Con ORDER obtenemos un vector con los índices ordenados del vector original
+
+**Crea un vector x que contenga los números ordenados del 1 al 10 de forma consecutiva. Investiga la función rep(). Una vez comprobado que funciona, elimina las entradas repetidas del vector, para ello consulta la función unique().**
+```{r}
+x <- rep(1:10, 10)
+x
+```
+```{r}
+unique(x)
+```
+  
+
+**Crea un vector cualquiera. Devuelve de ese vector una muestra cinco números seleccionada al azar. Usa la función sample(), prueba a determinar los valores que quieres extraer con y sin remplazo.**
+```{r}
+sample(1:50, 5)
+```
+```{r}
+sample(1:50, 5, replace = TRUE)
+```
+```{r}
+sample(1:50, 5, replace = FALSE)
+```
+
+
+**Comprueba que objetos tienes ahora en tu espacio de trabajo. Prueba con la función ls() y la función objects()**
+```{r}
+ls()
+```
+```{r}
+objects()
+```
+
+### Explora el indexado de Vectores
+***
+
+**Ejecuta los siguientes comandos y comprueba su resultado**
+```{r}
+x <- 1:10
+names(x) <- letters[x]
+x[1:3]
+x[c(1,10)]
+x[c(-1,-2)]
+x[ x > 5]
+x[c("a","d")]
+x[]
+x <- 1:10; y <- c(x[1:5],99,x[6:10]); y
+
+```
+**Crea un vector con números del 1 al 100 y extrae los valores del 2 al 23.**
+```{r}
+x <- c(1:100)
+```
+
+```{r}
+x[2:23]
+```
+
+**Del mismo vector x extrae ahora todos los valores menos del 2:23**
+```{r}
+x[-c(2:23)]
+```
+**Cambia el número en la posición 5 por el valor 99**
+```{r}
+x[5] <- x[99]
+x[5]
+```
+**Crea un vector lógico del vector letters, (e.g. comprobando si existe c en el vector letters).**
+```{r}
+which(letters=="c")
+```
+
+**¿Qué devuelve el siguiente comando? which(rep(letters,2)=="c")**
+Las múltiples posicions dentro del vector de la letra c
+
+**¿Qué devuelve el siguiente comando? match(c("c","g"), letters)**
+La posicion dentro del vector de las letras c y g
+
+**Crea un vector x de elementos -5 -1, 0, 1, . . . , 6. Escribe un código en R del tipo x[ 'something' ], para extraer**
+Como no entiendo exactamente el objetivo del enunciado, he definido dos tipos de solciones
+```{r}
+x <- c("something" = c(-5:6))
+x[ 'something1' ]
+
+y <- list("something" = c(-5:6))
+y[ 'something' ]
+```
+
+elementos de x menores que  0,
+```{r}
+x <- c(-5:6)
+y[ 'something' ][[1]][x < 0]
+x[x < 0]
+```
+
+elementos de x menores o igual que 0,
+```{r}
+y[ 'something' ][[1]][x <= 0]
+x[x <= 0]
+```
+elementos of x mayor o igual que 3,
+```{r}
+y[ 'something' ][[1]][x >= 0]
+x[x >= 3]
+```
+elementos de x menor que 0 o mayor que  4
+```{r}
+y[ 'something' ][[1]][x < 0 | x > 4]
+x[x < 0 | x > 4]
+```
+elementos de x mayor que 0 y menor que 4
+```{r}
+y[ 'something' ][[1]][x > 0 & x < 4]
+x[x > 0 & x < 4]
+```
+elementos de x distintos de 0
+```{r}
+y[ 'something' ][[1]][x != 0]
+x[x != 0]
+```
+
+**El código is.na se usa para identificar valores ausentes (NA). Crea el vector x<- c(1,2,NA) y averigua que pasa cuando escribes is.na(x). Prueba con x[ x!=NA ] ¿obtienes con este comando los missing values de x?. ¿cuál es tu explicación?**
+```{r}
+x<- c(1,2,NA)
+is.na(x)
+x[x!=NA]
+x[!is.na(x)]
+```
+No se puede comparar un valor si es NA para ello se utiliza is.na(x)
+
+
+
+### Búsqueda de valores idénticos y distintos en Vectores
+***
+**Haz la intersección de dos vectores month.name[1:4] y  month.name[3:7] usando la función intersect().**
+```{r}
+intersect(month.name[1:4], month.name[3:7])
+```
+Devuelve los elementos comunes entre los dos vectores
+
+**Recupera los valores idénticos entre dos vectores usando %in%. Esta función devuelve un vector lógico de los elementos idénticos. Utiliza esa función para poder extraer ese subset del vector original.**
+```{r}
+"April" %in% month.name[1:4]
+```
+
+**Si x=month.name[1:4] e y= month.name[3:7] recupera los valores únicos en el primer vector. Para ello investiga la función setdiff().¿Puedes usarlo con caracteres?. Busca una alternativa.**
+```{r}
+setdiff(month.name[1:4], month.name[3:7])
+```
+
+
+**Une dos vectores sin duplicar las entradas repetidas. Investiga la función unión().**
+```{r}
+union(month.name[1:4], month.name[3:7])
+```
+
+**Recupera las entradas duplicadas que existen entre el vector x y el vector y**
+```{r}
+intersect(month.name[1:4], month.name[3:7])
+```
+
+### Filtrado de Vectores, subset(), which(), ifelse()
+***
+
+**R permite extraer elementos de un vector que satisfacen determinadas condiciones. Es una de las operaciones mas comunes. Dado el vector z obtén las posiciones donde el cuadrado de z sea mayor que 8 sin utilizar ninguna función, con filtrado normal**
+
+```{r}
+z <- c(5,2,-3,8)
+```
+```{r}
+z[x^2 > 8]
+```
+
+
+**R permite extraer elementos de un vector que satisfacen determinadas condiciones usando la función subset(), la diferencia entre esta función y el filtrado normal es como funciona con NA, subset(9 los elimina automáticamente del cálculo. Para el vector x <- c(6,1:3,NA,12)calcula los elementos mayores que 5 usando primero el filtrado normal y luego la función subset()**
+```{r}
+x <- c(6,1:3,NA,12)
+```
+```{r}
+x[x > 5]
+subset(x, x > 5)
+```
+
+**R permite extraer encontrar las posiciones en las que se encuentran los elementos que cumplen una determinada condición con which(). Utiliza esta función para encontrar dado el vector z, las posiciones donde el cuadrado de z sea mayor que 8**
+```{r}
+z <- c(5,2,-3,8)
+```
+
+```{r}
+which(z^2> 8)
+```
+
+**En R aparte de encontrarse los típicos bucles if-then-else existe la función ifelse(). Ifelse funciona de la siguiente manera (ver ejemplo). Para un vector x devuelve 5 para aquellos números que sean pares (módulo igual a 0) y 12 para los números impares. Práctica ahora para el vector x <- c(5,2,9,12)devuelve el doble de x si el valor de x es mayor que 6 y el triple si no lo es.**
+```{r}
+x <- 1:50 
+ifelse(x %% 2 == 0, 5, 12 )
+```
+```{r}
+x <-c(5,2,9,12)
+ifelse(x > 6, x*2, x*3 )
+```
+
+## R II PARTE
+
+### Matrices
+***
+**Ejecuta los siguientes comandos.**
+```{r}
+matrix(data=5, nr=2, nc=2)
+matrix(1:6, 2, 3)
+matrix(1:6, 2, 3, byrow=TRUE)
+```
+
+**Crea un vector z con los 30 primeros números y crea con el una matriz m con 3 filas y 10 columnas**
+```{r}
+z <- 1:30
+m <- matrix(z, 3, 10)
+```
+
+**Escribe la tercera columna en un vector**
+```{r}
+matrix(1:30, 3, 10)[ ,3]
+```
+
+
+**Create in R the matrices**
+
+x =3	2l
+  −1  1
+  Opción A
+```{r}
+x <- matrix(c(3, 21, -1, 1), 2, 2, byrow = TRUE)
+x
+```
+Opción B
+```{r}
+rbind(c(3, 21), c(-1, 1))
+```
+
+y =1	4	0
+   0	1	-1
+   
+Opción A
+```{r}
+y <- matrix(c(1, 4, 0, 0, 1, -1), 2, 3, byrow = TRUE)
+y
+```
+Opción B
+```{r}
+rbind(c(1, 4, 0), c(0, 1, -1))
+```
+
+Y calcula los efectos de los siguientes comandos
+(a) x[1,]
+```{r}
+x[1,]
+```
+
+(b) x[2,]
+```{r}
+x[2,]
+```
+(c) x[,2]
+```{r}
+ x[,2]
+```
+(d) y[1,2]
+```{r}
+y[1,2]
+```
+(e) y[,2:3]
+```{r}
+y[,2:3]
+```
+
+**Transforma la matriz m que creaste en el ejercicio anterior en un array multidimensional. (Pista: averigua lo que puedas de la función dim().)**
+```{r}
+array(m, dim(m))
+```
+
+
+**Crea un array de  5 x 5 x 2 y rellénalo con valores del 1 al 50. Investiga la función array(). Llama al array x**
+```{r}
+array(1:50, c(5, 5, 2))
+```
+
+
+**Dadas las matrices  m1 y m2 usa rbind() y cbind() para crear matrices nuevas utilizando estas funciones, llamalas M1 y M2. ¿En que se diferencian las matrices creadas?**
+
+```{r}
+m1 <- matrix(1, nr = 2, nc = 2)
+m2 <- matrix(2, nr = 2, nc = 2)
+```
+
+```{r}
+rbind(c(1, 1), c(1, 1))
+cbind(c(1, 1), c(1, 1))
+```
+Se diferencia en que rbind crea la matrix por filas y tendrá tantas vilas como vectores por parámetro se le pase.
+
+**El operador para el producto de dos matrices es  % %. Por ejemplo, considerando las dos matrices creadas en el ejercicio anterior utilízalo.**
+```{r}
+m1 %*% m2
+```
+
+
+* Usa la matriz M1 del ejercicio anterior  y aplica la función t(). ¿qué hace esa función?
+```{r}
+t(m1)
+```
+Devuelva la transposada de la matriz pasada por parámetro
+
+**Ejecuta los siguientes comandos basados en la función diag() sobre las matrices creadas anteriormente m1 y m2. ¿Qué tipo de acciones puedes ejecutar con ella?**
+```{r}
+diag(m1)
+diag(rbind(m1, m2) %*% cbind(m1, m2))
+diag(m1) <- 10
+diag(3)
+v <- c(10, 20, 30)
+diag(v)
+diag(2.1, nr = 3, nc = 5)
+```
+Con diag() puedo extraer o crear una nueva diagonal a la matriz
+
+**Ordena la matriz x <- matrix(1:100, ncol=10):**
+```{r}
+x <- matrix(1:100, ncol=10)
+```
+
+**a. en orden descendente por su segunda columna y asigna el resultado a una nueva matrix x1. Pista: función order()**
+```{r}
+x1 <- x
+x1[ ,2] <- x[ ,2][order(x[, 2], decreasing = TRUE)]
+```
+
+```{r}
+x1 <- x
+x1[ ,2] <- sort(x[, 2], decreasing = TRUE)
+x1
+```
+
+**b. en orden descendente por su segunda fila y asigna el resultado a una nueva matrix x2**
+```{r}
+x2 <- x
+x2[2, ] <- x2[2, ][order(x2[2 ,], decreasing = TRUE)]
+x2
+```
+
+**c. Ordena solo la primera columna de x de forma descendente**
+```{r}
+x[, 1] <- x[, 1][order(x[, 1], decreasing = TRUE)]
+x
+```
+
+
+**Crea los siguientes vectores:**
+
+Box office Star Wars: In Millions (!)  First element: US, Second element:
+Non-US
+```{r}
+new_hope = c(460.998007, 314.4)
+empire_strikes = c(290.475067, 247.9)
+return_jedi = c(309.306177, 165.8)
+```
+
+**Los datos se corresponden con las ventas en millones de la trilogía de la guerra de las galaxias. El primer numero corresponde a las ventas en US y el segundo al resto de países.**
+
+**Construye la matriz star_wars_matrix con  esos vectores**
+```{r}
+star_wars_matrix <-  cbind(new_hope, empire_strikes, return_jedi)
+star_wars_matrix
+```
+
+**Añádele nombres a las columnas y filas de la matriz según las descripciones dadas anteriormente de los datos**
+```{r}
+row.names(star_wars_matrix) <- c("Box office Star Wars: In Millions (!) First element: US", "Second element: NON-US")
+star_wars_matrix
+```
+
+
+**Calcula las ganacias  mundiales de cada película y  guardalas en un vector que se llame worldwide_vector.**
+```{r}
+worldwide_vector <- apply(star_wars_matrix, 2, sum)
+```
+
+**Añade éste ultimo vector como una fila nueva a la matriz star_wars_matrix y asigna el resultado a all_wars_matrix. Usa para ello la función cbind().**
+```{r}
+all_wars_matrix <- rbind(star_wars_matrix, "Ganancial mundiales" = worldwide_vector)
+```
+
+**Calcula las ganancias totals en USA y fuera de USA para las tres películas. Puedes usar para ello la función colSums() **
+```{r}
+rowSums(star_wars_matrix)
+```
+
+**Calcula la media de ganancias para todas las películas fuera de los estados unidos. Asigna esa media la variable non_us_all.**
+Opcion a
+```{r}
+means <- rowMeans(star_wars_matrix)
+means
+non_us_all <- means[[2]]
+```
+Opcion b
+```{r}
+mean(star_wars_matrix[2, ])
+```
+
+**Haz lo mismo pero solo par alas dos primeras películas . Asigna el resultado a la variable non_us_some.**
+```{r}
+non_us_all <- mean(star_wars_matrix[2, c(1, 2)])
+non_us_all
+```
+**Calcula cuantos visitantes hubo para cada película en cada área geográfica. Ya tienes las ganancias totales en star_wars_matrix. Asume que el precio de las entradas es de cinco euros/dólares (Nota: el numero total de visitantes para cada pelicula dividido por el precio del ticket te da el numero de visitantes)**
+```{r}
+visits <- all_wars_matrix[3, ]/5
+visits
+```
+**Calcula la media de visitantes en territorio USA y en territorio noUS.**
+```{r}
+rowMeans(star_wars_matrix / 5)
+```
+
+### Subsetting matrices y arrays 
+***
+**Crea un array i <- array(c(1:10),dim=c(5,2)). ¿Que información te dan los siguientes comandos?**
+```{r}
+i <- array(c(1:10),dim=c(5,2))
+```
+dim(i) => te deveulve el numero de filas y columnas
+nrow(i) =>te deveulve el numero de filas
+ncol(i) => te deveulve el numero de  columnas
+
+**Crea un array de dimensiones 5 filas y dos columnas y rellénalo con valores del 1-5 y del 5 al 1**
+```{r}
+x <- array(c(1:5, 5:1),dim=c(5,2))
+```
+**¿Qué hace el comando x[i] ¿. Comprueba que tienes en x antes x[1,1]** 
+Devuelve el valor que se encuentra en la posicion 1, 1
+
+**¿y el comando x[i] <- 0?**
+asigna el valor que se encuentra en la posicion 1, 1
+```{r}
+x[1,1] <- 0
+```
+
+**Descárgate el fichero array_datos.txt de PRADO (Datos/) e impórtalo en tu work space de R teniendo en cuenta que es un texto tabulado. Después crea un documento con los mismos datos pero en formato csv en vez de tab separated.**
+```{r}
+read.table("array_datos.txt", sep = "\t", header=T)
+```
+
+### Factors
+***
+
+**Dado x = c(1, 2, 3, 3, 5, 3, 2, 4, NA), ¿cuáles son los levels de factor(x)?**
+```{r}
+x <- factor(c(1, 2, 3, 3, 5, 3, 2, 4, NA))
+x
+```
+
+1, 2, 3, 4, 5
+
+**Dado  x <- c(11, 22, 47, 47, 11, 47, 11) y la ejecución de la sentencia factor(x, levels=c(11, 22, 47), ordered=TRUE) ¿cuál es el cuarto elemento de la salida?**
+```{r}
+x <- c(11, 22, 47, 47, 11, 47, 11)
+factor(x, levels=c(11, 22, 47), ordered=TRUE)
+```
+47 
+
+**Para el factor  z <- c("p", "a" , "g", "t", "b"), reemplaza el tercer elemento de z por "b".**
+```{r}
+z <- c("p", "a" , "g", "t", "b")
+x <- factor(z)
+x
+```
+
+z[3] <- "b"
+
+**Dado z <- factor(c("p", "q", "p", "r", "q")) escribe una expresión de R que cambie el level  "p" a "w"**
+```{r}
+z <- factor(c("p", "q", "p", "r", "q"))
+levels(z)[1] <- "w"
+```
+
+**Usa el dataset “iris”**
+
+**a) escribe la expresión necesaria para convertir la variable “Sepal.Length”  en un factor con cinco niveles (levels) . Pista( mira la función table() y la función cut().**
+
+```{r}
+table(cut(iris$Sepal.Length, breaks = 5))
+```
+cut => factor is returned, unless labels = FALSE which results in an integer vector of level codes.
+Table => table uses the cross-classifying factors to build a contingency table of the counts at each combination of factor levels.
+ 
+
+**b) escribe la expresión necesaria para generar una tabla de frecuencias con dos filas y tres columnas . Las filas deben referirse a si la variable “Sepal.length” es menor que 5 y las columnas a las diferentes expecies. El resultado debe ser: **
+
+        setosa versicolor virginica
+  FALSE     30         49        49
+  TRUE      20          1         1
+
+
+```{r}
+table(iris$Sepal.Length < 5, iris$Species)
+```
+
+**El factor responses se define como:**
+```{r}
+responses <- factor(c("Agree", "Agree", "Strongly Agree", "Disagree", "Agree"))
+```
+
+**sin embargo nos damos cuenta que tiene un nuevo nivel, "Strongly Disagree", que no estaba presente cuando se creó. Añade el nuevo nivel al factor y conviértelo en un factor ordenado de la siguiente forma:**
+```{r}
+factor(c(responses, "Strongly Disagree"), levels=c("Strongly Agree", "Agree",
+"Disagree", "Strongly Disagree"), ordered = TRUE)
+```
+
+**Dado el factor: x <- factor(c("high", "low", "medium", "high", "high", "low", "medium")) escribe la expresión en R que permita dar valores numéricos únicos para los distintos niveles (levels) de x según el siguiente esquema: **
+
+level high   => value 1
+level low    => value 2
+level medium => value 3
+
+```{r}
+x <- factor(c("high", "low", "medium", "high", "high", "low", "medium"))
+data.frame("level" = levels(x), "value" = c(1, 2, 3))
+```
+ 
+ 
+### Acceso y selección de secciones de un  data frames 
+***
+
+**Vamos a trabajar con un ejemplo que viene por defecto en la instalación de R USArrests. Este data frame contiene la información para cada estado Americano de las tasas de criminales (por 100.000 habitantes). Los datos de las columnas se refieren a Asesinatos, violaciones y porcentaje de la población que vive en áreas urbanas. Los datos son de 1973. Contesta a las siguientes preguntas sobre los datos**
+
+- Las dimensiones del dataframe 
+```{r}
+str(USArrests)
+```
+
+- La longitud del dataframe (filas o columnas)
+```{r}
+length(USArrests)
+```
+
+- Numero  de columnas
+```{r}
+ncol(USArrests)
+```
+
+- ¿Cómo calcularías el número de filas?
+```{r}
+nrow(USArrests)
+```
+
+- Obtén el nombre de las filas y las columnas para este data frame
+```{r}
+dim(USArrests)
+```
+
+- échale un vistazo a los datos, por ejemplo a las seis primeras filas
+```{r}
+USArrests[c(1:6), ]
+```
+
+- Ordena de forma decreciente las filas de nuestro data frame según el porcentaje de población en el área urbana. Para ello investiga la función order () y sus parámetros.
+```{r}
+USArrests[order(USArrests$UrbanPop, decreasing = TRUE),]
+```
+
+- ¿Podrías añadir un segundo criterio de orden?, ¿cómo?
+```{r}
+USArrests[order(USArrests$UrbanPop, USArrests$Assault, decreasing = TRUE),]
+```
+
+- Muestra por pantalla la columna con los datos de asesinato
+```{r}
+USArrests$Murder
+```
+
+- Muestra las tasas de asesinato para el segundo, tercer y cuarto estado 
+```{r}
+USArrests[c(2, 3, 4), 1]
+```
+
+- Muestra las primeras cinco filas de todas las columnas
+```{r}
+USArrests[c(1:5), ]
+```
+
+- Muestra todas las filas para las dos primeras columnas
+```{r}
+USArrests[, c(1:2)]
+```
+
+- Muestra todas las filas de las columnas 1 y 3
+```{r}
+USArrests[, c(1, 3)]
+```
+- Muestra solo las primeras cinco filas de las columnas 1 y 2
+```{r}
+USArrests[c(1:5), c(1, 2)]
+```
+
+- Extrae las filas para el índice Murder
+```{r}
+USArrests[ ,"Murder"]
+```
+```{r}
+USArrests$Murder
+```
+
+**Vamos con expresiones un poco mas complicadas:…**
+
+-¿Que estado tiene la menor tasa de asesinatos? ¿qué línea contiene esa información?, obtén esa informaciónn
+```{r}
+row.names(USArrests)[which.min(USArrests$Murder)]
+```
+
+
+¿Que estados tienen una tasa inferior al 4%?, obtén esa informaciónn
+```{r}
+row.names(USArrests)[which(USArrests$Murder < 5)]
+```
+
+
+¿Que estados estan en el cuartil superior (75) en lo que a poblacion en zonas urbanas se refiere?
+```{r}
+row.names(USArrests)[which(USArrests$UrbanPop > quantile(USArrests$UrbanPop)[[4]])]
+```
+
+
+* Vamos a trabajar con otro dataframe. Descarga el fichero student.txt de la plataforma PRADO, almacena la información en una variable llamada “students”. Ten en cuenta que los datos son tab-delimited y tienen un texto para cada columna. Comprueba que R ha leído correctamente el fichero imprimiendo el objeto en la pantalla
+```{r}
+students <- read.table("student.txt", header = TRUE)
+students
+```
+
+***Imprime solo los nombres de la columnas**
+```{r}
+colnames(students)
+```
+
+
+**Llama a la columna height solo**
+```{r}
+students$height
+```
+
+-¿Cuantas observaciones hay en cada grupo?. Utiliza la función table().  Este commando se puede utilizar para crear tablas cruzadas (cross-tabulations)
+//TODO
+```{r}
+with(students, table(colnames(students)))
+```
+**Crea nuevas variables a partir de los datos que tenemos. Vamos a crear una variable nueva “sym” que contenga M si el genero es masculino y F si el genero es femenino. Busca en la ayuda información sobre la función ifelse(). Crea una segunda variable “colours” cuyo valor será “Blue” si el estudiante es de kuopio y “Red” si es de otro sitio.**
+```{r}
+sym <- ifelse(students$gender == "male", "M", "F")
+sym
+```
+```{r}
+colours <- ifelse(students$population == "kuopio", "Blue", "Red")
+colours
+```
+**Con los datos anteriores de height y shoesize y las nuevas variables crea un nuevo data.frame que se llame students.new**
+```{r}
+ students.new  <- data.frame("sym" = sym, "colours" = colours)
+ students.new 
+```
+
+**Comprueba que la clase de student.new es un dataframe**
+```{r}
+is.data.frame(students.new)
+```
+
+**Crea dos subsets a partir del dataset student. Dividelo dependiendo del sexo. Para ello primero comprueba que estudiantes son hombres (male). Pista: busca información sobre la función which.**
+```{r}
+male <- which(students$gender == "male")
+female <- which(students$gender != "male")
+male
+female
+```
+
+**Basándote en esa selección dada por which() toma solo esas filas del dataset student para generar el subset stundent.male**
+```{r}
+stundent.male <- which(students$gender == "male")
+stundent.male
+```
+**Repite el procedimiento para seleccionar las estudiantes mujeres (females)**
+```{r}
+stundent.female <- which(students$gender != "male")
+stundent.female
+```
+**Utiliza la function write.table() para guarder el contenido de student.new en un archivo.**
+```{r}
+write.table(students.new, file = "studentsNew.txt")
+```
+
+**Accede al dataset “women”. **
+**Primero confirma que los datos están ordenados de forma creciente según la altura (height) y el peso (weight) sin mirar los datos**
+```{r}
+women$height == women$height[order(women$height)]
+women$weight == women$weight[order(women$weight)]
+```
+
+**Crea una nueva variable “bmi”. Este valor responde a la siguiente fórmula: BMI = ( Weight in Pounds / (Height in inches) x (Height in inches) ) x 703**
+```{r}
+BMI <- ( women$weight / women$height  * women$height) * 703
+```
+**Ordena el dataframe por el valor de bmi y lpor orden alfabético de la variable name**
+No posee la columna name.
+```{r}
+women = cbind(women, BMI)
+order(women$BMI)
+```
+
+**investiga las funciones is.unsorted(), sort() and order()**
+```{r}
+?sort
+?order
+?is.unsorted
+```
+
+## R III PARTE
+
+### Dataframes
+***
+
+**Busca los datasets “beaver1” y “beaver2” que contienen información sobre la temperatura corporal de dos castores. Añade una columna llamada “ID” al dataset beaver1 que tenga siempre el valor 1. De forma similar añade una columna “ID” al dataset beaver2 que tenga siempre el valor 2. A continuación concatena de forma vertical los dos dataframes y busca el subset de datos donde ambos Castores están activos.**
+
+```{r}
+beaver1$ID <- 1
+```
+
+```{r}
+beaver2$ID <- 2
+```
+
+```{r}
+x <- merge(beaver1, beaver2, by="activ", all=TRUE)
+x[which(x$activ == 1), ]
+```
+
+**Carga el set de datos CO2 y realiza las siguientes acciones:**
+**a. Ordena alfabéticamente los datos en función de la variable Plant. Recuerda que Plant es un factor. Imprime el resultado por pantalla para comprobarlo**
+```{r}
+CO2[order(as.character(CO2$Plant)), ]
+```
+
+
+**b. Ordena los datos en función del incremento de la variable uptake y el orden alfabético de la planta (en ese orden)**
+```{r}
+CO2[order(CO2$uptake, as.character(CO2$Plant)), ]
+```
+**c. Ordena de nuevo los datos en function del increment de la variable uptake y el orden alfabético reverso de la planta (en ese orden)**
+```{r}
+CO2[order(CO2$uptake, rev(as.character(CO2$Plant))), ]
+```
+
+
+**Para este ejercicio vamos a usar el dataset state.x77. Asegurate de que el objeto es un dataframe, si no lo es fuerza su conversión.**
+```{r}
+state.x77 <- as.data.frame(state.x77)
+```
+
+**Averigua cuantos estados tienen ingresos (Income) menores de 4300. Pista investiga subset()**
+```{r}
+subset(state.x77, Income < 4300)
+```
+**Averigua cual es el estado con los ingresos mas altos.**
+```{r}
+state.x77[which.max(state.x77$Income), ]
+```
+**Crea un data frame 2 df2 con los datasets existentes en R: state.abb, state.area, state.division, state.name, state.region. Las filas tienen que ser los nombres de los estados.**
+```{r}
+df2 <- data.frame(state.abb, state.area, state.division, state.name, state.region, row.names = state.name)
+df2
+```
+**Elimina de todas las variables la palabra state. Busca alguna función para strings.**
+
+
+**Bora la variable div de df2. Estas borrando una única variable del dataframe**
+
+**Añade por columnas el nuevo dataframe df2 al dataframe state.x77**
+```{r}
+df2 <- cbind(state.x77, df2)
+df2
+```
+
+**Elimina las variables Life Exp, HS Grad, Frost, abb, y are.**
+```{r}
+df2 <- df2[ , c(-4, -6, -7, -9, -10), drop = FALSE]
+df2
+```
+
+**Añade una variable que categorice el nivel de formacion (illiteracy) de manera que [0,1) is low, [1,2) is some, [2, inf) is high. Pista. Hazlo de dos formas usando la función cut() y usando ifelse()**
+```{r}
+df2$Formación <- cut(df2$Illiteracy, breaks = c(0, 1, 2, Inf), labels = c("low","some", "hight"))
+df2
+```
+
+**Encuentra que estado del oeste (west) tiene la formación mas baja y los mayors ingresos. ¿Que estado es?**
+```{r}
+df2[order(df2[,3], -df2[,2]), ][1, ]
+```
+**Crea un dataframe df with 40 columns, as follows:**
+```{r}
+df <- as.data.frame(matrix(sample(1:5, 2000, T), ncol=40))
+```
+**Ordena el dataframe por columnas, de izquierda a derecha en orden creciente **
+```{r}
+df[with(df, order(colnames(df), decreasing = FALSE)), ]
+```
+**Ordena el dataframe por columnas, de izquierda a derecha en orden decreciente**
+```{r}
+df[with(df, order(colnames(df), decreasing = TRUE)), ]
+```
+**Ordena el dataframe por columnas, de derecha a izquierda en orden creciente**
+```{r}
+df[with(df, order(rev(colnames(df)), decreasing = FALSE)), ]
+```
+
+
+
+### Importando información
+***
+
+**Vamos a trabajar con otro dataframe. Descarga el fichero student.txt de la plataforma PRADO, almacena la información en una variable llamada “students”. Ten en cuenta que los datos son tab-delimited y tienen un texto para cada columna. Comprueba que R ha leído correctamente el fichero imprimiendo el objeto en la pantalla**
+
+**Imprime solo los nombres de la columnas**
+```{r}
+colnames(students)
+```
+
+**Llama a la columna “height” solo**
+```{r}
+students$height
+```
+**¿Cuantas observaciones hay en cada grupo?. Utiliza la función table().  Este comando se puede utilizar para crear tablas cruzadas (cross-tabulation)**
+```{r}
+table(students$population)
+```
+**Crea nuevas variables a partir de los datos que tenemos. Vamos a crear una variable nueva “sym” que contenga M si el genero es masculino y F si el genero es femenino. Busca en la ayuda información sobre la función ifelse(). Crea una segunda variable “colours” cuyo valor será “Blue” si el estudiante es de kuopio y “Red” si es de otro sitio.**
+```{r}
+students$sym <- ifelse(students$gender == "male", "M", "F")
+students$colours <- ifelse(students$population == "kuopio", "Blue", "Red")
+students
+```
+**Con los datos anteriores de height y shoesize y las nuevas variables crea un nuevo data.frame que se llame students.new**
+```{r}
+students.new <- data.frame(students$height, students$shoesize, students$sym, students$colours)
+```
+**Comprueba que la clase de student.new es un dataframe**
+```{r}
+is.data.frame(students.new)
+```
+
+**Crea dos subsets a partir del set de datos student. Divídelo dependiendo del sexo. Para ello primero comprueba que estudiantes son hombres (male). Pista: busca información sobre la función which().**
+```{r}
+students.new[which(students.new$students.sym == "M"), ]
+```
+```{r}
+students.new[which(students.new$students.sym != "M"), ]
+```
+**Basándote en esa selección dada por which() toma solo esas filas del dataset student para generar el subset stundent.male**
+```{r}
+stundent.male <- students.new[which(students.new$students.sym == "M"), ]
+```
+**Repite el procedimiento para seleccionar las estudiantes mujeres (females)**
+```{r}
+stundent.female <- students.new[which(students.new$students.sym != "M"), ]
+```
+**Utiliza la function write.table() para guarder el contenido de student.new en un archivo.**
+```{r}
+write.table(students.new, file = "students.txt")
+```
+
+
+### Lists
+***
+```{r}
+my_list <- list(name="Fred", wife="Mary", no.children=3, child.ages=c(4,7,9)) ##crear una lista de 4 elementos, dos contienen un vector de string y el resto vectores de números
+attributes(my_list) ## nos proporciona información acerca del nombre de la listas
+names(my_list) ## nos proporciona información acerca del nombre de la listas
+my_list[2]  ## accedemos al 2 elemento dentro de la lista
+my_list[[2]] ## accedemos al vector que se encuentron dentro del 2 elemento de la lista
+my_list$wife  ## intentamos acceder a un elemento dentro de la lista inexistente
+my_list[[4]][2] ## accedemos al 2 elemento dentro del vector que se encuentron dentro del 4 elemento de la lista
+length(my_list[[4]]) ## nos devuelve la longitut del vector que se encuentron dentro del 4 elemento de la lista
+my_list$wife <- 1:12   ## creamos un nuevo elemento llamado wife que contiene un vector del 1 al 12
+my_list$wife <- NULL ## asigamos al elemento wife null
+my_list <- c(my_list, list(my_title2=month.name[1:12])) ## concatenamos la lista existente con una nueva que contiene un elemento llamado my_title2
+unlist(my_list) ## creamos un vector a partir de la lista
+data.frame(unlist(my_list)) ## creamos un dataframe a partir del vector creado a partir de la lista
+matrix(unlist(my_list)) ## creamos un matriz a partir del vector creado a partir de la lista
+```
+
+### Table
+***
+
+**Cuenta el numero de entradas idénticas en la variable  Sepal.Length del dataset iris.**
+```{r}
+table(iris$Sepal.Length)
+```
+
+### Como ordenar datos, hacer selecciones con if(), calcular condicionales totales, transponer columnas y filas
+***
+
+**Vamos a volver a utilizar el datasets mtcars. **
+**Ordena este data set de forma ascendente según su valo de hp. PISTA: with()**
+```{r}
+mtcars[with(mtcars, order(hp)), ]
+```
+
+Hazlo ahora de forma descendente
+```{r}
+mtcars[with(mtcars, order(hp, decreasing = TRUE)), ]
+```
+**Calcula la media de la columna mpg.**
+```{r}
+mean(mtcars$mpg)
+```
+**Calcula la media de mpg para aquellos datos cuyo valor de hp sea menor que 150 y por separado para aquellos cuyo valor de hp sea mayor o igual a 150**
+```{r}
+mean(mtcars$mpg[mtcars$mpg < 150])
+mean(mtcars$hp[mtcars$hp >= 150])
+```
+Busca los valores únicos de la columna cyl de mtcars. PISTA unique()
+```{r}
+mtcars[unique(mtcars$cyl), ]
+```
+Obten los datos de mpg cyl disp hp para “Toyota Corolla"
+```{r}
+mtcars["Toyota Corolla", c("mpg", "cyl", "disp", "hp")]
+```
+**Crea una nueva variable mpgClass de tipo categórico cuyo valor es “Low“ si el valor de mpg es menor que la media de la columna mpg y “High” si es mayor que la media de mpg. PISTA ifelse(). Combina ese comando con with() para añadir la nueva variable a mtcars. qué pasa cuando ejecutas este comando?**
+with solo sirve para intereatuar con el elemento, no lo modifica por tanto, no se puede añadir una columna con este comando
+```{r}
+mpgClass <- ifelse(mtcars$mpg < mean(mtcars$mpg), "Low", "Hight")
+mtcars$mpgClass <-mpgClass
+```
+
+

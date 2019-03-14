@@ -1,0 +1,8 @@
+"0","```r
+star_wars_matrix <-  cbind(new_hope, empire_strikes, return_jedi)
+star_wars_matrix
+```"
+"1","     new_hope empire_strikes return_jedi
+[1,]  460.998       290.4751    309.3062
+[2,]  314.400       247.9000    165.8000
+"

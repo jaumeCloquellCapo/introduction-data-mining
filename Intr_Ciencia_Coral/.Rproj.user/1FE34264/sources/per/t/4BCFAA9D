@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1542127519171.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "205403589",
+    "id" : "4BCFAA9D",
+    "lastKnownWriteTime" : 1541533863,
+    "last_content_update" : 1541533863,
+    "path" : "~/Desktop/R/Entrega Final/Untitled.Rmd",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "9,3",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

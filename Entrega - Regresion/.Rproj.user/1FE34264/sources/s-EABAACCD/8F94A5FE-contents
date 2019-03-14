@@ -1,0 +1,43 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+TAREA (para evaluación continua):
+Reproduzca el estudio para el conjunto de datos
+California y suba el/los fichero/s .R a PRADO en
+la actividad correspondiente
+
+Cargamos los datos que se encuentran en "california.dat" dentro de la varaiabel xtra
+```{r}
+ library(ggplot2)
+xtra <- read.csv("california.dat", comment.char="@")
+names(xtra) <- c("Longitude", "Latitude", "HousingMedianAge",
+"TotalRooms", "TotalBedrooms", "Population", "Households",
+"MedianIncome", "MedianHouseValue")
+```
+
+El primer paso a la hora de establecer un modelo lineal multiple es estudiar la relación que existe entre las variables y con ello identificar cuáles pueden ser los mejores predictores para el modelo.
+```{r}
+my_fn <- function(data, mapping, ...){
+  p <- ggplot(data = data, mapping = mapping) + 
+    geom_point() + 
+    geom_smooth(method=loess, fill="red", color="red", ...) +
+    geom_smooth(method=lm, fill="blue", color="blue", ...)
+  p
+}
+ggpairs(xtra, lower = list(continuous = my_fn))
+```
+Como observamos
+
+```{r}
+temp <- xtra
+plotY <- function (x,y) {
+plot(temp[,y]~temp[,x], xlab=paste(names(temp)[x]," X",x,sep=""),
+ylab=names(temp)[y])
+}
+par(mfrow=c(3,4))
+x <- sapply(1:(dim(temp)[2]-1), plotY, dim(temp)[2])
+par(mfrow=c(1,1))
+```
+

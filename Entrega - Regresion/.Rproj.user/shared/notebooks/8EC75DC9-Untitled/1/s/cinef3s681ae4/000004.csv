@@ -1,0 +1,7 @@
+"0","temp <- xtra"
+"0","plotY <- function (x,y) {"
+"0","plot(temp[,y]~temp[,x], xlab=paste(names(temp)[x],"" X"",x,sep=""""),"
+"0","ylab=names(temp)[y])"
+"0","}"
+"0","par(mfrow=c(3,4))"
+"0","x <- sapply(1:(dim(temp)[2]-1), plotY, dim(temp)[2])"

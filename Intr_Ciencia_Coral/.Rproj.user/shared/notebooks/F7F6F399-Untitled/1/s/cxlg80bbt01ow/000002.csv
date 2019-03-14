@@ -1,0 +1,4 @@
+"0","```r
+x <- merge(beaver1, beaver2, by=\"activ\", all=TRUE)
+x[which(x$activ == 1), ]
+```"

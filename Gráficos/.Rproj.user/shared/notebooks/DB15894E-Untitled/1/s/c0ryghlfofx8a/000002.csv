@@ -1,0 +1,5 @@
+"0","```r
+union(month.name[1:4], month.name[3:7])
+```"
+"1","[1] \"January\"  \"February\" \"March\"    \"April\"    \"May\"      \"June\"     \"July\"    
+"

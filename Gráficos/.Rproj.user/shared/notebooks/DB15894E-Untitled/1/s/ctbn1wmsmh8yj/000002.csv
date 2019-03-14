@@ -1,0 +1,3 @@
+"0","```r
+mtcars[with(mtcars, order(hp)), ]
+```"
